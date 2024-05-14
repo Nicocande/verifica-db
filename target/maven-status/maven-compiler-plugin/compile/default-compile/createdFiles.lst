@@ -1,0 +1,7 @@
+it\tsp\control\StoreException.class
+it\tsp\entity\BaseEntity.class
+it\tsp\boundary\RegistrationException.class
+it\tsp\control\Store.class
+it\tsp\App.class
+it\tsp\boundary\Actions.class
+it\tsp\entity\Book.class

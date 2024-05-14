@@ -1,13 +1,13 @@
 package it.tsp;
+import it.tsp.gui.WinHome;
 
-/**
- * Hello world!
- *
- */
-public class App 
-{
-    public static void main( String[] args )
-    {
-        System.out.println( "Hello World!" );
+public class App {
+   
+    public static void main(String args[]) {
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new WinHome().setVisible(true);
+            }
+        });
     }
 }
