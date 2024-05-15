@@ -40,9 +40,9 @@ public class WinHome extends javax.swing.JFrame {
 
         private void addEventListeners() {
                 jbtAdd.addActionListener(this::addBookAE);
-                jbtDelete.addActionListener(this::deleteBookAE);
+                jbtDelete.addActionListener(this::deleteBookTableAE);
                 jbtReset.addActionListener(this::resetFieldsAE);
-                jbtUpdate.addActionListener(this::updateBooksTableAE);
+                jbtUpdate.addActionListener(this::updateBookTableAE);
                 jbtExit.addActionListener(this::ExitAE);
 
         }
@@ -55,7 +55,11 @@ public class WinHome extends javax.swing.JFrame {
                 Bookshop.addBook(bookName, edition, price);
         }
 
-        private void deleteBookAE(ActionEvent evt) {
+        private void deleteBookTableAE(ActionEvent evt) {
+                String bookName = jtxBookName.getText();
+                int edition = Integer.parseInt(jtxEdition.getText());
+                int price = Integer.parseInt(jtxPrice.getText());
+                Bookshop.deleteBookTable();
 
         }
 
@@ -72,10 +76,11 @@ public class WinHome extends javax.swing.JFrame {
                         
                 }
 
-        private void updateBooksTableAE(ActionEvent evt) {
+        private void updateBookTableAE(ActionEvent evt) {
                 String bookName = jtxBookName.getText();
                 int edition = Integer.parseInt(jtxEdition.getText());
                 int price = Integer.parseInt(jtxPrice.getText());
+                Bookshop.updateBookTable();
 
         }
 
