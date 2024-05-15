@@ -10,39 +10,56 @@ public class Bookshop {
         return Store.findBookbyID(bookID);
     }
 
-    public Book bookRegistration(String nameBook, int edition, int price) {
+    
+    public static Book addBook(String nameBook, int edition,int price) {
+
         try {
             Store.beginTran();
-            Book book = new Book(nameBook, edition, price);
+            Book book= new Book(nameBook, edition, price);
             Store.saveBook(book);
             Store.commitTran();
             return book;
-
+            
         } catch (Exception e) {
             Store.rollTran();
         }
         return null;
-    }
-
-    public static void addBook(String nameBook, int edition,int price) {
-        Store.beginTran();
-        Book book= new Book(nameBook, edition, price);
-        Store.saveBook(book);
-        Store.commitTran();
-        Store.rollTran();
+       
 
     }
 
-    public static void removeBook(String nameBook,int edition, int price) {
-        Store.beginTran();
-        Book book = new Book(nameBook, edition, price);
-        Store.removeBook(book);
-        Store.commitTran();
-        Store.rollTran();
+    public static Book removeBook(String nameBook,int edition, int price) {
+
+        try {
+            Store.beginTran();
+            Book book = new Book(nameBook, edition, price);
+            Store.removeBook(book);
+            Store.commitTran();
+            return book;
+            
+        } catch (Exception e) {
+            Store.rollTran();
+        }
+        return null;
+       
+        
 
     }
-    public static void updateBooksTable(){
+    public static void updateBookTable(Book b){
+
+
+        
+        Store.updateRowTable(b);
+
 
 
     }
+
+    public static void deleteBookTable(Book b){
+
+        Store.deleteRowTable(b);
+
+    }
+
+
 }

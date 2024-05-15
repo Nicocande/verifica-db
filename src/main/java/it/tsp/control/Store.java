@@ -64,6 +64,14 @@ public class Store {
         System.out.println(b);
     }
 
+    public static void updateRowTable(Book b) {
+
+    }
+
+    public static void deleteRowTable(Book b) {
+
+    }
+
     public static void beginTran() {
         if (em.getTransaction().isActive()) {
             em.getTransaction();

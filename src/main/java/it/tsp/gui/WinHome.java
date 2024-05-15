@@ -2,8 +2,12 @@ package it.tsp.gui;
 
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
+
 import it.tsp.boundary.Bookshop;
 import it.tsp.entity.Book;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import java.text.MessageFormat;
 
 public class WinHome extends javax.swing.JFrame {
         private javax.swing.JButton jbtAdd;
@@ -24,6 +28,7 @@ public class WinHome extends javax.swing.JFrame {
         private javax.swing.JLabel lbEdition;
         private javax.swing.JLabel lbPrice;
         private javax.swing.JLabel lbTitle;
+        private JFrame frame;
 
         ArrayList<Book> listBooks = new ArrayList<Book>();
 
@@ -34,14 +39,15 @@ public class WinHome extends javax.swing.JFrame {
         }
 
         private void addEventListeners() {
-                jbtAdd.addActionListener(this::addBook);
-                jbtDelete.addActionListener(this::deleteBook);
-                jbtReset.addActionListener(this::resetFields);
-                jbtUpdate.addActionListener(this::updateBooksTable);
-                jbtExit.addActionListener(this::Exit);
+                jbtAdd.addActionListener(this::addBookAE);
+                jbtDelete.addActionListener(this::deleteBookAE);
+                jbtReset.addActionListener(this::resetFieldsAE);
+                jbtUpdate.addActionListener(this::updateBooksTableAE);
+                jbtExit.addActionListener(this::ExitAE);
+
         }
 
-        private void addBook(ActionEvent evt) {
+        private void addBookAE(ActionEvent evt) {
 
                 String bookName = jtxBookName.getText();
                 int edition = Integer.parseInt(jtxEdition.getText());
@@ -49,22 +55,39 @@ public class WinHome extends javax.swing.JFrame {
                 Bookshop.addBook(bookName, edition, price);
         }
 
-        private void deleteBook(ActionEvent evt) {
-                Bookshop.removeBook(getName(), ALLBITS, ABORT);
+        private void deleteBookAE(ActionEvent evt) {
 
         }
 
-        private void resetFields(ActionEvent evt) {
-                jtxBookName.setText("");
-                jtxEdition.setText("");
-                jtxPrice.setText("");
+        private void resetFieldsAE(ActionEvent evt) {
+
+                try { 
+                        jtxBookName.setText(null);
+                        jtxEdition.setText(null);
+                        jtxPrice.setText(null);
+        
+                        
+                } catch (Exception e) {
+                        System.out.println("reset not done");}
+                        
+                }
+
+        private void updateBooksTableAE(ActionEvent evt) {
+                String bookName = jtxBookName.getText();
+                int edition = Integer.parseInt(jtxEdition.getText());
+                int price = Integer.parseInt(jtxPrice.getText());
+
         }
 
-        private void updateBooksTable(ActionEvent evt) {
+        private void ExitAE(ActionEvent evt) {
+                frame = new JFrame("Exit");
 
-        }
+                if (JOptionPane.showConfirmDialog(frame, "Confirm if you want to exit", "Data Entry For",
+                                JOptionPane.YES_NO_OPTION) == JOptionPane.YES_NO_OPTION) {
 
-        private void Exit(ActionEvent evt) {
+                        System.exit(0);
+
+                }
 
         }
 
