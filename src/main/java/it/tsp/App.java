@@ -1,13 +1,23 @@
 package it.tsp;
 
-/**
- * Hello world!
- *
- */
-public class App 
-{
-    public static void main( String[] args )
-    {
-        System.out.println( "Hello World!" );
+import it.tsp.boundary.Bookshop;
+import it.tsp.gui.WinHome;
+
+public class App {
+
+
+    public static void main( String[] args ){
+    java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new WinHome().setVisible(true);
+                
+                
+                Bookshop.addBook("bb", 3, 150);
+                
+
+            }
+        });
+        
     }
+
 }

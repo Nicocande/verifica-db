@@ -1,74 +1,54 @@
 package it.tsp.entity;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+
+
+
+@Entity
+@Table(name = "t_books")
+
 
 public class Book {
-    private int bookID;
+    @Column(name = "bname")
     private String bname;
-    private String edition;
+    @Column(name = "edition")
+    private int edition;
+    @Column(name = "price")
     private int price;
 
+    public Book() {
 
+    }
 
-    public Book(int bookID, String bname, String edition, int price) {
-        this.bookID = bookID;
+    public Book(String bname, int edition, int price) {
         this.bname = bname;
         this.edition = edition;
         this.price = price;
     }
-
-
-
-    public Book() {
-    }
-
-
 
     public String getBname() {
         return bname;
     }
 
-
-
     public void setBname(String bname) {
         this.bname = bname;
     }
 
-
-
-    public String getEdition() {
+    public int getEdition() {
         return edition;
     }
 
-
-
-    public void setEdition(String edition) {
+    public void setEdition(int edition) {
         this.edition = edition;
     }
-
-
 
     public int getPrice() {
         return price;
     }
 
-
-
     public void setPrice(int price) {
         this.price = price;
     }
-
-
-
-    @Override
-    public String toString() {
-        return "Book [bookID=" + bookID + ", bname=" + bname + ", edition=" + edition + ", price=" + price + "]";
-    }
-
-    
-
-
-    
-
-
-    
 
 }
